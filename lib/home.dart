@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskbloc/screens/add_task.dart';
 import 'package:taskbloc/widgets/user_drawer.dart';
 
 class Home extends StatefulWidget {
@@ -37,7 +38,8 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Implement adding task functionality
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddTask()));
         },
         child: const Icon(Icons.add),
       ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:taskbloc/auth/log_in.dart';
 import 'package:taskbloc/home.dart';
+import 'package:taskbloc/screens/Flincap_acount.dart';
 import 'package:taskbloc/screens/about.dart';
+import 'package:taskbloc/screens/add_task.dart';
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({super.key});
@@ -93,7 +95,14 @@ class UserDrawer extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => const FlincapAccount(),
+                      ),
+                    );
+                  },
                 ),
                 const Divider(
                   height: 10,
@@ -112,7 +121,14 @@ class UserDrawer extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => AddTask(),
+                      ),
+                    );
+                  },
                 ),
                 const Divider(
                   height: 10,

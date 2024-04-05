@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:http/http.dart' as http;
+import 'package:webview_flutter/webview_flutter.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -10,36 +9,30 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  late final Future<String> _aboutContent = fetchAboutContent();
-
-   Future<String> fetchAboutContent() async {
-    final response = await http.get(Uri.parse('https://sites.google.com/view/taskbloc/home'));
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      throw Exception('Failed to load about content');
-    }
-  }
+  bool _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('About')),
+        title: const Text('About'),
       ),
-      body: FutureBuilder<String>(
-        future: _aboutContent,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else {
-            return SingleChildScrollView(
-              child: Html(data: snapshot.data ?? ''),
-            );
-          }
-        },
+      body: Stack(
+        children: [
+          WebView(
+            initialUrl: 'https://sites.google.com/view/taskbloc/home',
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageFinished: (_) {
+              setState(() {
+                _isLoading = false;
+              });
+            },
+          ),
+          if (_isLoading)
+           const  Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
       ),
     );
   }
