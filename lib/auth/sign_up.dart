@@ -9,7 +9,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  bool _isObscure = true;
+
 
   @override
   Widget build(BuildContext context) {
