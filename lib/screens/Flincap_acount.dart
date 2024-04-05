@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskbloc/widgets/flincap.dart';
 
 class FlincapAccount extends StatefulWidget {
   const FlincapAccount({Key? key}) : super(key: key);
@@ -39,10 +40,12 @@ class _FlincapAccountState extends State<FlincapAccount> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Add your logic to link Flincap account here
-                String username = _flincapUsernameController.text;
-                String password = _flincapPasswordController.text;
-                // Call a function to link Flincap account with the provided credentials
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (c) => const Flincap(),
+                  ),
+                );
               },
               child: Text('Link Account'),
             ),

@@ -39,6 +39,10 @@ dependencies:
   flutter_html: ^2.2.1
   flutter_math_fork: ^0.5.0
   webview_flutter: ^2.8.0
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.17.4
+  cloud_firestore: ^4.15.4
+  firebase_storage: ^11.6.5
   
   
 

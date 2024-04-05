@@ -16,27 +16,22 @@ class UserDrawer extends StatelessWidget {
           // hearder drawer
           Container(
             padding: const EdgeInsets.only(top: 25, bottom: 10),
-            child: Column(
+            child: const Column(
               children: [
                 Material(
-                  borderRadius: const BorderRadius.all(Radius.circular(80)),
+                  borderRadius: BorderRadius.all(Radius.circular(80)),
                   elevation: 10,
                   child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                      height: 160,
-                      width: 160,
-                      child: const CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' // Replace with the actual image URL,
-                            ),
-                      ),
+                    padding: EdgeInsets.all(1.0),
+                    child: CircleAvatar(
+                      radius: 70,
+                      backgroundImage: AssetImage('images/profile.jpg'),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  'User Name',
+                SizedBox(height: 10),
+                Text(
+                  'David Onuche',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
