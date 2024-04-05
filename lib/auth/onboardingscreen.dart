@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:taskbloc/auth/log_in.dart';
 import 'package:taskbloc/auth/sign_up.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Timer(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const SignUp()),
+        MaterialPageRoute(builder: (context) => const LogIn()),
       );
     });
   }
@@ -42,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 color: Colors.white,
                 image: DecorationImage(
                   image: AssetImage(
-                    'images/logo.png',
+                    'images/logo.jpg',
                   ),
                   fit: BoxFit.fill,
                 ),

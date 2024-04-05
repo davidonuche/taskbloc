@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskbloc/auth/log_in.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _SignUpState extends State<SignUp> {
           children: [
             // App Icon
             Image.asset(
-              'images/logo.png',
+              'images/logo.jpg',
               width: 100,
               height: 100,
             ),
@@ -55,6 +56,8 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildSignUpForm() {
+    bool _isPasswordObscure = true;
+    bool _isConfirmPasswordObscure = true;
     return Column(
       children: [
         TextFormField(
@@ -93,15 +96,15 @@ class _SignUpState extends State<SignUp> {
             labelText: 'Password',
             prefixIcon: const Icon(Icons.lock),
             suffixIcon: IconButton(
-              icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+              icon: Icon(_isPasswordObscure ? Icons.visibility : Icons.visibility_off),
               onPressed: () {
                 setState(() {
-                  _isObscure = !_isObscure;
+                   _isPasswordObscure = !_isPasswordObscure;
                 });
               },
             ),
           ),
-          obscureText: _isObscure,
+          obscureText: _isPasswordObscure,
         ),
         const SizedBox(height: 10),
         TextFormField(
@@ -109,15 +112,15 @@ class _SignUpState extends State<SignUp> {
             labelText: 'Confirm Password',
             prefixIcon: const Icon(Icons.lock),
             suffixIcon: IconButton(
-              icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+              icon: Icon(_isConfirmPasswordObscure ? Icons.visibility : Icons.visibility_off),
               onPressed: () {
                 setState(() {
-                  _isObscure = !_isObscure;
+                 _isConfirmPasswordObscure = !_isConfirmPasswordObscure;
                 });
               },
             ),
           ),
-          obscureText: _isObscure,
+          obscureText: _isConfirmPasswordObscure,
         ),
         const SizedBox(height: 20),
         ElevatedButton(
@@ -125,6 +128,32 @@ class _SignUpState extends State<SignUp> {
             // Implement sign up functionality
           },
           child: const Text('Sign Up'),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Already have an account?',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(width: 5),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LogIn()));
+              },
+              child: const Text(
+                'Log In',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
