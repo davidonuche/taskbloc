@@ -125,7 +125,8 @@ class _SignUpState extends State<SignUp> {
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
-            // Implement sign up functionality
+       Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LogIn()));
           },
           child: const Text('Sign Up'),
         ),
